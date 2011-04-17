@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{918F3AC8-E674-4C37-8E05-CCF62FFFE424}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VBKiller</RootNamespace>
+    <AssemblyName>VBKiller</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\生成\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\生成\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IDACSharp, Version=1.0.3791.31490, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\生成\IDACSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddressConverter.cs" />
+    <Compile Include="CustomProperty.cs" />
+    <Compile Include="Entity\CodeInfo.cs" />
+    <Compile Include="Entity\ComRegData.cs" />
+    <Compile Include="Entity\ComRegInfo.cs" />
+    <Compile Include="Entity\DataDirectory.cs" />
+    <Compile Include="Entity\DataFieldAttribute.cs" />
+    <Compile Include="Entity\DataObjectAttribute.cs" />
+    <Compile Include="Entity\DesignerInfo.cs" />
+    <Compile Include="Entity\DosHeader.cs" />
+    <Compile Include="Entity\EntityBase.cs" />
+    <Compile Include="Entity\EntityBase2.cs" />
+    <Compile Include="Entity\EventLink.cs" />
+    <Compile Include="Entity\EventLink2.cs" />
+    <Compile Include="Entity\EventPointer.cs" />
+    <Compile Include="Entity\EventTable.cs" />
+    <Compile Include="Entity\ExportDirectory.cs" />
+    <Compile Include="Entity\ExternalComponentTable.cs" />
+    <Compile Include="Entity\ExternalLibrary.cs" />
+    <Compile Include="Entity\ExternalTable.cs" />
+    <Compile Include="Entity\DataFieldItem.cs" />
+    <Compile Include="Entity\FileHeader.cs" />
+    <Compile Include="Entity\GUIObjectInfo.cs" />
+    <Compile Include="Entity\GUITable.cs" />
+    <Compile Include="Entity\MethodLinkNative.cs" />
+    <Compile Include="Entity\MethodLinkPCode.cs" />
+    <Compile Include="Entity\OptionalHeader.cs" />
+    <Compile Include="Entity\PrivateObjectDescriptor.cs" />
+    <Compile Include="Entity\ObjectInfo.cs" />
+    <Compile Include="Entity\ObjectTable.cs" />
+    <Compile Include="Entity\OptionalObjectInfo.cs" />
+    <Compile Include="Entity\ProcName.cs" />
+    <Compile Include="Entity\ProjectInfo.cs" />
+    <Compile Include="Entity\ProjectInfo2.cs" />
+    <Compile Include="Entity\TypeApiList.cs" />
+    <Compile Include="Entity\TypeProcedureList.cs" />
+    <Compile Include="Entity\VBControl.cs" />
+    <Compile Include="Entity\VBHeader.cs" />
+    <Compile Include="Entity\PublicObjectDescriptor.cs" />
+    <Compile Include="FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GuidConverter.cs" />
+    <Compile Include="VBInfo.cs" />
+    <Compile Include="VBPlugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VBStruct.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy VBKiller.dll ..\..\IDA\CSharp\VBKiller.dll /y
+copy VBKiller.pdb ..\..\IDA\CSharp\VBKiller.pdb /y</PostBuildEvent>
+  </PropertyGroup>
+</Project>
