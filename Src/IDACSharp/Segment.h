@@ -6,7 +6,7 @@ using namespace System::Text;
 
 #include <segment.hpp>
 
-#include "IDA.h"
+#include "IdaHelper.h"
 
 namespace IDACSharp {
 
@@ -33,7 +33,7 @@ namespace IDACSharp {
 		}
 
 		static Segment^ FindByName(String^ name){
-			segment_t* f = get_segm_by_name(IDA::CastStringToChar(name));
+			segment_t* f = get_segm_by_name(IdaHelper::CastStringToChar(name));
 			if (f == NULL) return nullptr;
 			
 			return gcnew Segment(f);
@@ -67,7 +67,7 @@ namespace IDACSharp {
 				char temp[256];
 				get_segm_name(ptr, temp, sizeof(temp) - 1);
 
-				return IDA::CastCharToString(temp);
+				return IdaHelper::CastCharToString(temp);
 			}
 		}
 
@@ -77,7 +77,7 @@ namespace IDACSharp {
 				char temp[256];
 				get_true_segm_name(ptr, temp, sizeof(temp) - 1);
 
-				return IDA::CastCharToString(temp);
+				return IdaHelper::CastCharToString(temp);
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace IDACSharp {
 			char temp[256];
 			get_segm_name(ea, temp, sizeof(temp) - 1);
 
-			return IDA::CastCharToString(temp);
+			return IdaHelper::CastCharToString(temp);
 		}
 
 		//×¢ÊÍ
@@ -97,7 +97,7 @@ namespace IDACSharp {
 				if(String::IsNullOrEmpty(value))
 					del_segment_cmt(ptr, false);
 				else {
-					set_segment_cmt(ptr, IDA::CastStringToChar(value), false);
+					set_segment_cmt(ptr, IdaHelper::CastStringToChar(value), false);
 				}
 			}
 		}
@@ -111,7 +111,7 @@ namespace IDACSharp {
 				if(String::IsNullOrEmpty(value))
 					del_segment_cmt(ptr, true);
 				else {
-					set_segment_cmt(ptr, IDA::CastStringToChar(value), true);
+					set_segment_cmt(ptr, IdaHelper::CastStringToChar(value), true);
 				}
 			}
 		}

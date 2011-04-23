@@ -52,9 +52,13 @@ namespace IDACSharp {
 	{
 	public:
 
-		static String^ SegName(ea_t ea){
+		static String^ SegName(ea_t ea)
+		{
 			segment_t* seg = getseg(ea);
-			if (seg == NULL) return String::Empty;
+			if (seg == NULL)
+			{ 
+				return String::Empty;
+			}
 			char temp[256];
 			get_true_segm_name(seg, temp, sizeof(temp));
 			String^ str = gcnew String(temp);

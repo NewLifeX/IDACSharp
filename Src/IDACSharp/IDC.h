@@ -19,8 +19,8 @@ namespace IDACSharp {
 
 		static bool HasValue(flags_t ea){ return Bytes::HasValue(ea); }
 
-		static bool MakeName(ea_t ea, String^ name, int flag){ return set_name(ea, IDA::CastStringToChar(name), flag); }
-		static bool MakeName(ea_t ea, String^ name){ return set_name(ea, IDA::CastStringToChar(name), SN_CHECK); }
+		static bool MakeName(ea_t ea, String^ name, int flag){ return set_name(ea, IdaHelper::CastStringToChar(name), flag); }
+		static bool MakeName(ea_t ea, String^ name){ return set_name(ea, IdaHelper::CastStringToChar(name), SN_CHECK); }
 
 		static int MakeCode(ea_t ea){ return create_insn(ea); }
 

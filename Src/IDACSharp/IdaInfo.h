@@ -7,7 +7,7 @@ using namespace System::Text;
 // The header file of the LIB to be linked
 #include <ida.hpp>
 
-#include "IDA.h"
+#include "IdaHelper.h"
 
 namespace IDACSharp {
 	//文件类型
@@ -104,7 +104,8 @@ namespace IDACSharp {
 		CompilerInfo^ Compiler;
 
 		static property IdaInfo^ Instance {
-			IdaInfo^ get() {
+			IdaInfo^ get()
+			{
 				if (_Instance == nullptr) {
 					_Instance = gcnew IdaInfo();
 
@@ -141,7 +142,7 @@ namespace IDACSharp {
 		static String^ GetInputFilePath(){
 			char ch[256];
 			get_input_file_path(ch, sizeof(ch) - 1);
-			return IDA::CastCharToString(ch);
+			return IdaHelper::CastCharToString(ch);
 		}
 	};
 }

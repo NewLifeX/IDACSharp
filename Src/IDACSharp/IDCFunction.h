@@ -5,7 +5,7 @@ using namespace System;
 
 #include <expr.hpp>
 
-#include "IDA.h"
+#include "IdaHelper.h"
 #include "Bytes.h"
 
 namespace IDACSharp {
@@ -36,11 +36,11 @@ namespace IDACSharp {
 		property String^ StringValue {
 			String^ get(){
 				if (Type!=IDCValueTypes::STR) return nullptr;
-				return IDA::CastCharToString(ptr->str);
+				return IdaHelper::CastCharToString(ptr->str);
 			}
 			void set(String^ value){
 				Type = IDCValueTypes::STR;
-				ptr->str = (char*)IDA::CastStringToChar(value);
+				ptr->str = (char*)IdaHelper::CastStringToChar(value);
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace IDACSharp {
 		extfun_t* ptr;
 
 	public:
-		property String^ Name { String^ get(){ return IDA::CastCharToString(ptr->name); }}
+		property String^ Name { String^ get(){ return IdaHelper::CastCharToString(ptr->name); }}
 
 		property List<IDCValueTypes>^ Args { 
 			List<IDCValueTypes>^ get(){
@@ -112,7 +112,7 @@ namespace IDACSharp {
 		static IDCValue^ Eval(ea_t ea, String^ idcexp){
 			IDCValue^ rv = gcnew IDCValue();
 			char* errbuf = new char[256];
-			if(!calc_idc_expr(ea, IDA::CastStringToChar(idcexp), rv->ptr, errbuf, 255)) throw gcnew Exception(IDA::CastCharToString(errbuf));
+			if(!calc_idc_expr(ea, IdaHelper::CastStringToChar(idcexp), rv->ptr, errbuf, 255)) throw gcnew Exception(IdaHelper::CastCharToString(errbuf));
 			return rv;
 		}
 
@@ -134,15 +134,15 @@ namespace IDACSharp {
 				return 0;
 		}
 
-		static bool Execute(String^ idcexp){ return execute(IDA::CastStringToChar(idcexp)); }
+		static bool Execute(String^ idcexp){ return execute(IdaHelper::CastStringToChar(idcexp)); }
 
 		static bool CompileFile(String^ file){ 
 			char* errbuf = new char[256];
-			bool b = compile_script_file(IDA::CastStringToChar(file), errbuf, 255); 
-			if (!b) throw gcnew Exception(IDA::CastCharToString(errbuf));
+			bool b = compile_script_file(IdaHelper::CastStringToChar(file), errbuf, 255); 
+			if (!b) throw gcnew Exception(IdaHelper::CastCharToString(errbuf));
 			return b;
 		}
 
-		static bool DoSysFile(String^ file){ return dosysfile(true, IDA::CastStringToChar(file)); }
+		static bool DoSysFile(String^ file){ return dosysfile(true, IdaHelper::CastStringToChar(file)); }
 	};
 }

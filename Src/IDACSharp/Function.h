@@ -8,7 +8,7 @@ using namespace System;
 #include <idp.hpp>
 
 #include "area.h"
-#include "IDA.h"
+#include "IdaHelper.h"
 
 
 namespace IDACSharp {
@@ -131,7 +131,7 @@ namespace IDACSharp {
 					//for	(int i=0; i<value->Length; i++) {
 					//	chs[i] = value[i];
 					//}
-					set_func_cmt(func, IDA::CastStringToChar(value), false);
+					set_func_cmt(func, IdaHelper::CastStringToChar(value), false);
 					//delete chs;
 				}
 			}
@@ -150,7 +150,7 @@ namespace IDACSharp {
 					//for	(int i=0; i<value->Length; i++) {
 					//	chs[i] = value[i];
 					//}
-					set_func_cmt(func, IDA::CastStringToChar(value), true);
+					set_func_cmt(func, IdaHelper::CastStringToChar(value), true);
 					//delete chs;
 				}
 			}

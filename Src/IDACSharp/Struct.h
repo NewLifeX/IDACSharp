@@ -6,7 +6,7 @@ using namespace System::Collections::Generic;
 
 #include <struct.hpp>
 
-#include "IDA.h"
+#include "IdaHelper.h"
 #include "Bytes.h"
 
 namespace IDACSharp {
@@ -83,7 +83,7 @@ namespace IDACSharp {
 				return GetMemberName(ID);
 			}
 			void set(String^ value) {
-				set_member_name(sptr, Offset, IDA::CastStringToChar(value));
+				set_member_name(sptr, Offset, IdaHelper::CastStringToChar(value));
 			}
 		}
 		// 完全名字
@@ -98,7 +98,7 @@ namespace IDACSharp {
 				return GetMemberComment(ID, false);
 			}
 			void set(String^ value) {
-				set_member_cmt(ptr, IDA::CastStringToChar(value), false);
+				set_member_cmt(ptr, IdaHelper::CastStringToChar(value), false);
 			}
 		}
 
@@ -246,7 +246,7 @@ namespace IDACSharp {
 				return GetStructName(ID);
 			}
 			void set(String^ value) {
-				set_struc_name(ID, IDA::CastStringToChar(value));
+				set_struc_name(ID, IdaHelper::CastStringToChar(value));
 			}
 		}
 		// 注释
@@ -255,7 +255,7 @@ namespace IDACSharp {
 				return GetStructComment(ID, false);
 			}
 			void set(String^ value) {
-				set_struc_cmt(ID, IDA::CastStringToChar(value), false);
+				set_struc_cmt(ID, IdaHelper::CastStringToChar(value), false);
 			}
 		}
 
@@ -280,14 +280,14 @@ namespace IDACSharp {
 
 		// 添加成员。实际比较复杂，这里仅处理常用的
 		Member^ Add(String^ name, ea_t offset, flags_t flag, const typeinfo_t *mt, asize_t nbytes) {
-			if(add_struc_member(ptr, IDA::CastStringToChar(name), offset, flag, mt, nbytes) != 0) return nullptr;
+			if(add_struc_member(ptr, IdaHelper::CastStringToChar(name), offset, flag, mt, nbytes) != 0) return nullptr;
 			return GetMember(offset);
 		}
 
 		// 添加成员
 		Member^ Add(String^ name, ea_t offset, flags_t flag, ea_t tid, asize_t nbytes, ea_t target, adiff_t tdelta, uchar reftype) {
 			const typeinfo_t* ti = PrepareStrucMemberTypeinfo(flag, tid, target, tdelta, reftype);
-			if(add_struc_member(ptr, IDA::CastStringToChar(name), offset, flag, ti, nbytes) != 0) return nullptr;
+			if(add_struc_member(ptr, IdaHelper::CastStringToChar(name), offset, flag, ti, nbytes) != 0) return nullptr;
 			return GetMember(offset);
 		}
 
@@ -326,7 +326,7 @@ namespace IDACSharp {
 
 		// 取得结构体成员
 		Member^ GetMemberByName(String^ name) {
-			member_t* entity = get_member_by_name(ptr, IDA::CastStringToChar(name));
+			member_t* entity = get_member_by_name(ptr, IdaHelper::CastStringToChar(name));
 			if (entity == NULL) return nullptr;
 
 			return gcnew Member(ptr, entity);
@@ -334,7 +334,7 @@ namespace IDACSharp {
 
 		// 设置成员名称
 		bool SetMemberName(ea_t offset, String^ name) {
-			return set_member_name(ptr, offset, IDA::CastStringToChar(name));
+			return set_member_name(ptr, offset, IdaHelper::CastStringToChar(name));
 		}
 
 		//***************************静态成员******************************************
@@ -358,7 +358,7 @@ namespace IDACSharp {
 		// 创建结构体
 		static Struct^ Create(String^ name, uval_t index, bool isUnion) {
 			// 创建
-			tid_t id = add_struc(index, IDA::CastStringToChar(name), isUnion);
+			tid_t id = add_struc(index, IdaHelper::CastStringToChar(name), isUnion);
 
 			struc_t* entity = get_struc(id);
 			if (entity == NULL) return nullptr;
@@ -394,6 +394,6 @@ namespace IDACSharp {
 		static tid_t GetStructByIndex(uval_t index) { return get_struc_by_idx(index); }
 
 		// 根据名字找结构体的序数
-		static tid_t GetStructID(String^ name) { return get_struc_id(IDA::CastStringToChar(name)); }
+		static tid_t GetStructID(String^ name) { return get_struc_id(IdaHelper::CastStringToChar(name)); }
 	};
 }

@@ -7,9 +7,10 @@ using namespace System;
 #include <name.hpp>
 #include <struct.hpp>
 
-#include "IDA.h"
+#include "IdaHelper.h"
 
-namespace IDACSharp {
+namespace IDACSharp 
+{
 
 	// 数据类型
 	[Flags]
@@ -41,6 +42,7 @@ F0OFF    = 0x00500000L,         // byte
 		ULen2    =5,       // Pascal-style Unicode, length is 2 bytes
 		ULen4    =6        // Pascal-style Unicode, length is 4 bytes
 	};
+
 
 	// 字节
 	public ref class Bytes
@@ -99,14 +101,14 @@ F0OFF    = 0x00500000L,         // byte
 		static uint64 Qword(ea_t ea) { return get_qword(ea); }
 
 		// 名称
-		static bool MakeName(ea_t ea, String^ name, int flag){ return set_name(ea, IDA::CastStringToChar(name), flag); }
-		static bool MakeName(ea_t ea, String^ name){ return set_name(ea, IDA::CastStringToChar(name), SN_CHECK); }
-		static bool MakeNameAnyway(ea_t ea, String^ name){ return do_name_anyway(ea, IDA::CastStringToChar(name)); }
+		static bool MakeName(ea_t ea, String^ name, int flag){ return set_name(ea, IdaHelper::CastStringToChar(name), flag); }
+		static bool MakeName(ea_t ea, String^ name){ return set_name(ea, IdaHelper::CastStringToChar(name), SN_CHECK); }
+		static bool MakeNameAnyway(ea_t ea, String^ name){ return do_name_anyway(ea, IdaHelper::CastStringToChar(name)); }
 
 		static String^ GetName(ea_t from, ea_t ea) {
 			char buf[256];
 			get_name(from, ea, buf, sizeof(buf) - 1);
-			return IDA::CastCharToString(buf);
+			return IdaHelper::CastCharToString(buf);
 		}
 
 		static String^ GetName(ea_t ea) {
@@ -116,7 +118,7 @@ F0OFF    = 0x00500000L,         // byte
 		static String^ GetTrueName(ea_t from, ea_t ea) {
 			char buf[256];
 			get_true_name(from, ea, buf, sizeof(buf) - 1);
-			return IDA::CastCharToString(buf);
+			return IdaHelper::CastCharToString(buf);
 		}
 
 		static String^ GetTrueName(ea_t ea) {
@@ -150,8 +152,8 @@ F0OFF    = 0x00500000L,         // byte
 		static int AnalyzeArea(ea_t start, ea_t end){ return analyze_area(start, end); }
 
 		// Comments
-		static bool MakeComment(ea_t ea, String^ comm){ return set_cmt(ea, IDA::CastStringToChar(comm), 0); }
-		static bool MakeRepeatableComment(ea_t ea, String^ comm){ return set_cmt(ea, IDA::CastStringToChar(comm), 1); }
+		static bool MakeComment(ea_t ea, String^ comm){ return set_cmt(ea, IdaHelper::CastStringToChar(comm), 0); }
+		static bool MakeRepeatableComment(ea_t ea, String^ comm){ return set_cmt(ea, IdaHelper::CastStringToChar(comm), 1); }
 		static String^ GetComment(ea_t ea, bool repeatable){
 			char chs[1024];
 			get_cmt(ea, repeatable, chs, sizeof(chs) - 1); 
@@ -211,7 +213,7 @@ F0OFF    = 0x00500000L,         // byte
 			return doStruct(ea, size, tid);
 		}		
 		static bool MakeStruct(long ea, long size, String^ name){
-			tid_t tid = get_struc_id(IDA::CastStringToChar(name));
+			tid_t tid = get_struc_id(IdaHelper::CastStringToChar(name));
 
 			if (size == -1) size = get_struc_size(tid);
 
@@ -235,7 +237,7 @@ F0OFF    = 0x00500000L,         // byte
 		static ea_t PrevNotTail(ea_t ea) { return prev_not_tail(ea); }
 
 		// 根据名称取得地址
-		static ea_t LocByName(ea_t from, String^ name) { return get_name_ea(from, IDA::CastStringToChar(name)); }
+		static ea_t LocByName(ea_t from, String^ name) { return get_name_ea(from, IdaHelper::CastStringToChar(name)); }
 		static ea_t LocByName(String^ name) { return LocByName(Bytes::BadAddress, name); }
 
 	};
