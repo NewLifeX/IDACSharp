@@ -6,6 +6,7 @@ using namespace System::Text;
 
 // The header file of the LIB to be linked
 #include <ida.hpp>
+#include <nalt.hpp>
 
 #include "IdaHelper.h"
 

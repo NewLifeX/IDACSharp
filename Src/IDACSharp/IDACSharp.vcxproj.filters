@@ -24,6 +24,18 @@
     <ClCompile Include="inc.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="area.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Function.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IdaInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Instruction.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Area.h">
@@ -71,8 +83,23 @@
     <ClInclude Include="Struct.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CompilerInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Dbg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IdaHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Idd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Loader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="说明.txt" />
+    <None Include="Readme.txt" />
   </ItemGroup>
 </Project>

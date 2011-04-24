@@ -34,7 +34,7 @@ namespace IDACSharp {
 
 			String^ file = Path::Combine(path, "CSharpLoader.dll");
 			if(!File::Exists(file)){
-				msg("未找到CSharp加载器%s！请把CShapLoader.dll文件拷贝到该位置！\n", file);
+				msg("未找到CSharp加载器%s！请把CSharpLoader.dll文件拷贝到该位置！\n", file);
 				return;
 			}
 

@@ -131,29 +131,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="area.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Function.cpp" />
     <ClCompile Include="IDACSharp.cpp" />
+    <ClCompile Include="IdaInfo.cpp" />
     <ClCompile Include="inc.cpp" />
+    <ClCompile Include="Instruction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Area.h" />
     <ClInclude Include="Bytes.h" />
+    <ClInclude Include="CompilerInfo.h" />
+    <ClInclude Include="Dbg.h" />
     <ClInclude Include="Entry.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="IDA.h" />
     <ClInclude Include="IDACSharp.h" />
+    <ClInclude Include="IdaHelper.h" />
     <ClInclude Include="IdaInfo.h" />
     <ClInclude Include="IDC.h" />
     <ClInclude Include="IDCFunction.h" />
+    <ClInclude Include="Idd.h" />
     <ClInclude Include="Instruction.h" />
     <ClInclude Include="KernelWin.h" />
+    <ClInclude Include="Loader.h" />
     <ClInclude Include="Ref.h" />
     <ClInclude Include="Search.h" />
     <ClInclude Include="Segment.h" />
     <ClInclude Include="Struct.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="说明.txt" />
+    <None Include="Readme.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

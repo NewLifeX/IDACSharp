@@ -14,7 +14,7 @@ using namespace System::Security::Permissions;
 [assembly:AssemblyConfigurationAttribute("")];
 [assembly:AssemblyCompanyAttribute("新生命开发团队")];
 [assembly:AssemblyProductAttribute("IDACSharp")];
-[assembly:AssemblyCopyrightAttribute("Copyright (c) 新生命开发团队 2010")];
+[assembly:AssemblyCopyrightAttribute("Copyright (c) 新生命开发团队 2002-2011")];
 [assembly:AssemblyTrademarkAttribute("")];
 [assembly:AssemblyCultureAttribute("")];
 
@@ -35,10 +35,12 @@ using namespace System::Security::Permissions;
 
 [assembly:SecurityPermission(SecurityAction::RequestMinimum, UnmanagedCode = true)];
 
-[assembly:AssemblyVersionAttribute("1.0.*")];
-[assembly:AssemblyFileVersionAttribute("1.0.2010.0519")];
+[assembly:AssemblyVersionAttribute("1.1.*")];
+[assembly:AssemblyFileVersionAttribute("1.1.2011.0424")];
 
 /*
+ *
+ * v1.1.2011.0424	小曾增加一些调试相关封装
  *
  * V1.0.2010.0519	完成常用函数的封装
  */
