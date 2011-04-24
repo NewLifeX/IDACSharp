@@ -379,7 +379,7 @@ namespace IDACSharp
 		{
 			return select_thread(tid);
 		}
-		static bool request_select_thread(thid_t tid)
+		static bool Request_Select_Thread(thid_t tid)
 		{
 			return request_select_thread(tid);
 		}
