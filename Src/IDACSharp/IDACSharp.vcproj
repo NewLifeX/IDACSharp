@@ -61,10 +61,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="D:\Develop_Tool\IDA_SDK_5.5\libvc.w32\ida.lib $(NOINHERIT)"
+				AdditionalDependencies="$(NOINHERIT)"
 				OutputFile="$(OutDir)\..\$(ProjectName).plw"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\..\IDASDK55\libvc.w32"
+				AdditionalLibraryDirectories="..\..\IDASDK55\libvc.w32;D:\Develop_Tool\IDA_SDK_5.5\libvc.w32"
 				GenerateDebugInformation="true"
 				AssemblyDebug="1"
 				TargetMachine="1"
