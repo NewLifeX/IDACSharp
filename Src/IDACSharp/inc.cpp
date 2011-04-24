@@ -1,3 +1,5 @@
+#pragma comment(lib,"ida.lib")
+
 #include "area.h"
 #include "Function.h"
 #include "IdaInfo.h"
