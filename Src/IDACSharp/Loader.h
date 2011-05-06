@@ -8,16 +8,32 @@
 //
 //-----------------------------------------------------------------------------
 
-
 //******************************************************************************
 //对 loader.hpp 头文件进行封装  write by dreamzgj 
 //******************************************************************************
+
+#include <stdarg.h>
+#include <loader.hpp>
+
+int __stdcall Internal_CallBack(void *User_Data,int Notification_Code,va_list VaList)
+{
+	msg("printf notification code:%d\n",Notification_Code);
+
+	
+
+	return 0;
+}
+
+
 using namespace System;
+using namespace System::Runtime::InteropServices;
+
 
 namespace IDACSharp
 {
 #ifndef __LOADER_H__
 #define __LOADER_H__
+
 
 	public enum class Enum_Hook_Type_T
 	{
@@ -48,23 +64,36 @@ namespace IDACSharp
 
 	public ref class Ida_Loader
 	{
+	private:
+		[UnmanagedFunctionPointer(CallingConvention::StdCall)]
+		delegate int InternalEventHandler(Object^ User_Data,int Notification_Code, va_list VaList);
+
+		int __stdcall Internal_CallBack(ref class Object^ User_Data,int Notification_Code, va_list VaList)
+		{
+			msg("callback_func is called back\n");
+			return 0;
+		}
 	public:
-		//public delegate bool Hook_Cb_T(Object^ User_Data,int Notification_Code, ...array<Object^>^ Args);
-		//
-		//static bool Hook_To_Notification_Point(Enum_Hook_Type_T Hook_Type,Hook_Cb_T Cb,Object^ User_Data)
-		//{
-		//	
-		//}
+		 delegate  bool IdaEventHandler(Object^ User_Data,int Notification_Code, ...array<Object^>^ ArgsList);
+		
+		static bool Hook_To_Notification_Point(Enum_Hook_Type_T Hook_Type,IdaEventHandler^ Handler)
+		{
+			//InternalEventHandler^ h=gcnew InternalEventHandler();
+			//IntPtr ip=Marshal::GetFunctionPointerForDelegate(h);
+			//return hook_to_notification_point((hook_type_t)(int)Hook_Type,(hook_cb_t(__stdcall *))ip.ToPointer(),NULL);
+			return true;
+		}
+		static bool Hook_To_Notification_Point(Enum_Hook_Type_T Hook_Type,IdaEventHandler^ Handler,Object^ User_Data){return false;}
 
-		//static int UnHook_From_Notification_Point(Enum_Hook_Type_T Hook_Type,Hook_Cb_T Cb,Object^ User_Data)
-		//{
-		//	
-		//}
 
-		//static int Invoke_CallBacks(Enum_Hook_Type_T Hook_Type,int Notification_Code,...array<Object^>^ Args)
-		//{
-		//	
-		//}
+		static int UnHook_From_Notification_Point(Enum_Hook_Type_T Hook_Type,IdaEventHandler^ Handler)
+		{
+			//return unhook_from_notification_point((hook_type_t)Hook_Type,Cb,NULL);
+			//return true;
+			return true;
+		}
+		static int UnHook_From_Notification_Point(Enum_Hook_Type_T Hook_Type,IdaEventHandler^ Handler,Object^ User_Data){return false;}
+
 	};
 	
 
